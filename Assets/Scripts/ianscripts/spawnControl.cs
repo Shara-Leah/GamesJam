@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class spawnControl : MonoBehaviour
 {
-    
+
     public GameObject Danger;
-    
+
     Camera cam;
     float Width;
     float Height;
@@ -14,9 +14,10 @@ public class spawnControl : MonoBehaviour
     Vector3 topleft;
     Vector3 bottomright;
     Vector3 bottomleft;
-   float time = 1.5f ;
+    public float time = 1.5f;
     [SerializeField]
-    private bool speedUp=true;
+    private bool speedUp = true;
+    [SerializeField]
     private bool spawn;
     int loopCount = 5;
     // Start is called before the first frame update
@@ -58,11 +59,7 @@ public class spawnControl : MonoBehaviour
             StartCoroutine(MoveSpawnPoint());
             spawn = false;
         }
-        if (speedUp == true)//prevents couroutine being called every update
-        {
-            StartCoroutine(speedUpC());
-            speedUp = false;
-        }
+       
     }
 
 
@@ -71,20 +68,25 @@ public class spawnControl : MonoBehaviour
     private IEnumerator MoveSpawnPoint()
     {
         for (int i = 0; i < loopCount; i++)
+        {
+            Debug.Log(time * Time.deltaTime);
+            yield return new WaitForSeconds(time); //adds delay
+           Vector3 randomSP = new Vector3((Width / 2 + 1), UnityEngine.Random.Range(bottomright.y, topright.y), 0); //picks random spot moves to
+          transform.position = randomSP;
+           Instantiate(Danger, transform.position, transform.rotation);
+        }
+           
 
-            yield return new WaitForSeconds(time * Time.deltaTime); //adds delay
-
-        Instantiate(Collectable, transform.position, transform.rotation);
-        Vector3 randomSP = new Vector3((Width / 2 + 1), UnityEngine.Random.Range(bottomright.y, topright.y), 0); //picks random spot moves to
-        transform.position = randomSP;
-        Instantiate(Danger, transform.position, transform.rotation);
+        
+        
+      StartCoroutine(speedUpC());
+     spawn = true;//resets loop
     }
+
+
    
-    
-    StartCoroutine(speedUpC());
-    spawn = true;//resets loop
                      // Debug.Log("moved");
-    }
+    
     private IEnumerator speedUpC()
     {
         yield return new WaitForSeconds(0);
