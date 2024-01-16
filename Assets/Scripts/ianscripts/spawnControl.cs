@@ -69,7 +69,7 @@ public class spawnControl : MonoBehaviour
     {
         for (int i = 0; i < loopCount; i++)
         {
-            Debug.Log(time * Time.deltaTime);
+            //Debug.Log(time * Time.deltaTime);
             yield return new WaitForSeconds(time); //adds delay
            Vector3 randomSP = new Vector3((Width / 2 + 1), UnityEngine.Random.Range(bottomright.y, topright.y), 0); //picks random spot moves to
           transform.position = randomSP;
