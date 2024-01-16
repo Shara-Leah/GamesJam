@@ -12,10 +12,16 @@ public class Playermovement : MonoBehaviour
     //Tells the player they can only move side to side at a certain speed
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.S))
         {
-            Debug.Log("space key was pressed");
-            transform.position += transform.position + new Vector3(0, movementSpeed * Time.deltaTime, 0);
+            Debug.Log("down");
+            transform.position += new Vector3(0, movementSpeed * Time.deltaTime, 0);
+
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            Debug.Log("up");
+            transform.position += new Vector3(0, (movementSpeed/-1) * Time.deltaTime, 0);
 
         }
     }
