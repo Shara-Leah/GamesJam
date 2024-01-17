@@ -5,11 +5,19 @@ using UnityEngine;
 public class boulderManager : MonoBehaviour
 {
     //Where boulder resets to on x axis
-    public int resetPositionX = 40;
+    public int resetPositionX;
+    public GameObject boudler;
+    private GameObject spawnedBoudler;
+    public float boudlerSpeed;
+    private Rigidbody2D rb;
+    private float spawnPosY;
 
-    //On trigger, boulder teleports to (40, random y). 
-    public void OnTriggerEnter2D (Collider2D col)
+    //On trigger, boulder is destroyed and a new one is created  
+    public void OnTriggerEnter2D (Collider2D other)
     {
-        col.transform.position = new Vector2(resetPositionX, Random.Range(-10.0f, 10.0f));
+        Destroy(other.gameObject);
+        GameObject spawnedBoudler = Instantiate(boudler);
+        spawnPosY = Random.Range(-6f, 6f); //Picks random Y value to teleport boudler to
+        spawnedBoudler.transform.position = new Vector3(resetPositionX, spawnPosY, 0); //Sets position for new boulder
     }    
 }
