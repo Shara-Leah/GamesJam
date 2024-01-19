@@ -12,17 +12,16 @@ public class Playermovement : MonoBehaviour
     //Tells the player they can only move side to side at a certain speed
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKey(KeyCode.S))
         {
             Debug.Log("down");
-            transform.position += new Vector3(0, movementSpeed * Time.deltaTime, 0);
-
+            transform.Translate(Vector3.down * movementSpeed * Time.deltaTime);
         }
-        if (Input.GetKeyDown(KeyCode.W))
+
+        if (Input.GetKey(KeyCode.W))
         {
             Debug.Log("up");
-            transform.position += new Vector3(0, (movementSpeed/-1) * Time.deltaTime, 0);
-
+            transform.Translate(Vector3.up * movementSpeed * Time.deltaTime);
         }
     }
 
