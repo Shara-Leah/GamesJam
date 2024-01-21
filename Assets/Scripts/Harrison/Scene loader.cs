@@ -1,19 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NewBehaviourScript : MonoBehaviour
 {
     //Loads the next scene when the player clicks the play button in the menu scene
     public void PlayGame()
     {
-        //SceneManager.LoadScene("Introduction"); - remove slashes if variable is added
+        SceneManager.LoadScene("GamePlay");
     }
     //Allows the player to quit the game when they click the exit button
     public void QuitGame()
     {
         Debug.Log("Exit");
         Application.Quit();
+    }
+
+    public void Settings()
+    {
+        //this scene allows the scenes to swap from the pause menu to the main menu without interuption
+        SceneManager.LoadScene("Menu");
     }
 
     //Above script is for button UIs on click, which could be used for menu and below script could be used for game over screen if player hits boulder
