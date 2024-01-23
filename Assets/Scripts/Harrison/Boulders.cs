@@ -8,7 +8,7 @@ public class Boulders : MonoBehaviour
     public float MovementSpeed = -0.1f;   // base speed
     public float SpeedUp = -0.1f;         // speed up by
     public float MaxSpeed = -0.3f;        // max speed
-    private float CurrentSpeed = -0.1f;       // how fast its going
+    public float CurrentSpeed = -0.1f;       // how fast its going
     private bool CanSpeedUp = true;        // can we go faster
 
     private void Update()
