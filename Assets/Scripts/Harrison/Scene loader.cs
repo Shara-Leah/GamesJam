@@ -23,6 +23,18 @@ public class NewBehaviourScript : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+    public void Retry()
+    {
+        //allows the player to retry the game
+        SceneManager.LoadScene("GamePlay");
+    }
+
+    public void Exit()
+    {
+        //this scene allows the exit to go and goes to the main menu
+        SceneManager.LoadScene("Menu");
+    }
+
     //Above script is for button UIs on click, which could be used for menu and below script could be used for game over screen if player hits boulder
 
     public AudioSource soundPlayer;
