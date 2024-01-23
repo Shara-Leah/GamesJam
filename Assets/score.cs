@@ -13,7 +13,7 @@ public class score : MonoBehaviour
     private void Update()
     {
         Score += pointsPerSec * Time.deltaTime;
-        scoreText.text = Score.ToString();
+        scoreText.text = "Score: " + Score.ToString();
     }
 
 }
